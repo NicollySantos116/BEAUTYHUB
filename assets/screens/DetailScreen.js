@@ -25,13 +25,12 @@ const styles = StyleSheet.create({
         flex: 1,
         padding: 20,
         backgroundColor: '#f8edf1',
-        padding: 20,
     },
     botaoVoltar: {
         marginTop: 20,
         marginBottom: 10,
     },
-    caixaImagem : {
+    caixaImagem: {
         backgroundColor: '#f6c8d4',
         borderRadius: 20,
         alignItems: 'center',
