@@ -1,20 +1,18 @@
-import { text } from 'express';
 import React from 'react';
-import {TouchableOpacity, View, Text, Image, StyleSheet} from 'react-native';
-
+import { TouchableOpacity, Text, Image, StyleSheet } from 'react-native';
 export default function
 ProductCard({product, onPress}) {
     return (
-           <TouchableOpacity style ={StyleSheet.card} onPress={onPress}>
-        <Image source={{ uri: product.image}} style= {StyleSheet.image}/>
-        <Text style= {StyleSheet.name}>{product.name}</Text>
+           <TouchableOpacity style ={styles.card} onPress={onPress}>
+        <Image source={{ uri: product.image}} style= {styles.image}/>
+        <Text style= {styles.name}>{product.name}</Text>
     </TouchableOpacity>
     );
  
 }
 
 
-const style= StyleSheet.create ({
+const styles= StyleSheet.create ({
     card: {
         width: '30%',
         backgroundColor: '#f6c8d4',
@@ -24,16 +22,16 @@ const style= StyleSheet.create ({
         marginBottom: 12,
     },
      
-    Image: {
+    image: {
         width: 70,
         height: 70,
         marginBottom: 8,
     },
 
     name: {
-        textAling: 'center',
-        fontize: 13,
+        textAlign: 'center',
+        fontSize: 13,
         color: "#555"
     }
 
-})
+});
