@@ -9,7 +9,10 @@ import { Ionicons } from '@expo/vector-icons';
             <TouchableOpacity style={styles.botaoVoltar} onPress={() => navigation.goBack()}>  
                 <Ionicons name="arrow-back" size={24} color="#333" />
             </TouchableOpacity>
-            <Image source={{ uri: product.imagem }} style={styles.imagem} />
+            <View style={styles.caixaImagem}>
+           <Image source={{ uri: product.imagem }} style={styles.imagem} />
+            </View>
+        
             <Text style={styles.nome}>{product.nome}</Text>
             <Text style={styles.preco}>{product.preco}</Text>
             <Text style={styles.descricao}>{product.descricao}</Text>
@@ -23,7 +26,6 @@ import { Ionicons } from '@expo/vector-icons';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 20,
         backgroundColor: '#f8edf1',
     },
     botaoVoltar: {
@@ -39,7 +41,6 @@ const styles = StyleSheet.create({
       imagem: {
         width: 180,
         height: 180,
-        color: '#444',
       },
       categoria: {
         fontSize: 14, 
@@ -51,6 +52,11 @@ const styles = StyleSheet.create({
         color: '#E2049F',
         fontWeight: 'bold',
         marginVertical: 10,
+      },
+      nome: {
+        fontSize: 22,
+        fontWeight: 'bold',
+        color: '#444',
       },
       descricao: {
         fontSize: 16,
