@@ -8,8 +8,8 @@ import {
   Image,
 } from 'react-native';
 import { Ionicons, Feather } from '@expo/vector-icons';
-import ProductCard from '../components/ProductCard';
-import { products } from '../data/products';
+import ProductCard from '../components/ProductCard.js';
+import { products } from '../data/products.js';
 
 export default function HomeScreen({ navigation }) {
   const skinCare = products.filter((item) => item.categoria == 'Skin Care')
