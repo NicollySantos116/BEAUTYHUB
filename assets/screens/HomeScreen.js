@@ -57,7 +57,7 @@ export default function HomeScreen({ navigation }) {
       </View>
 
       <Image
-       source={require('../image/banner.png')}
+       source={require('../assets/images/banner.png')}
         style={styles.banner}
       />
 
