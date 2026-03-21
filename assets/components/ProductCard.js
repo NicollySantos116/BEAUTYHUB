@@ -1,37 +1,41 @@
-import React from 'react';
-import { TouchableOpacity, Text, Image, StyleSheet } from 'react-native';
-export default function
-ProductCard({product, onPress}) {
-    return (
-           <TouchableOpacity style ={styles.card} onPress={onPress}>
-        <Image source={{ uri: product.image}} style= {styles.image}/>
-        <Text style= {styles.name}>{product.name}</Text>
+import React from "react";
+import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
+
+export default function ProductCard({ item, navigation }) {
+  return (
+    <TouchableOpacity
+      style={styles.card}
+      onPress={() => navigation.navigate("Detail", { product: item })}
+    >
+      <Image source={item.image} style={styles.image} />
+      <Text style={styles.name}>{item.name}</Text>
+      <Text style={styles.price}>{item.price}</Text>
     </TouchableOpacity>
-    );
- 
+  );
 }
 
-
-const styles= StyleSheet.create ({
-    card: {
-        width: '30%',
-        backgroundColor: '#f6c8d4',
-        borderRadius: 20,
-        padding: 10,
-        alignItems: 'center',
-        marginBottom: 12,
-    },
-     
-    image: {
-        width: 70,
-        height: 70,
-        marginBottom: 8,
-    },
-
-    name: {
-        textAlign: 'center',
-        fontSize: 13,
-        color: "#555"
-    }
-
+const styles = StyleSheet.create({
+  card: {
+    backgroundColor: "#f8cdd3",
+    padding: 10,
+    borderRadius: 20,
+    alignItems: "center",
+    margin: 8,
+    width: 150,
+  },
+  image: {
+    width: 90,
+    height: 90,
+    resizeMode: "contain",
+  },
+  name: {
+    fontSize: 12,
+    textAlign: "center",
+    marginTop: 5,
+  },
+  price: {
+    fontSize: 12,
+    color: "#e91e63",
+    fontWeight: "bold",
+  },
 });

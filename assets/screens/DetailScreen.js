@@ -1,77 +1,70 @@
-import  React from 'react';
-import{ View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native'
-import { Ionicons } from '@expo/vector-icons';
+import React from "react";
+import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 
- export default function DetailScreen({ route, navigation }) {
-    const { product } = route.params;
-    return (
-        <View style={styles.container}>
-            <TouchableOpacity style={styles.botaoVoltar} onPress={() => navigation.goBack()}>  
-                <Ionicons name="arrow-back" size={24} color="#333" />
-            </TouchableOpacity>
-            <View style={styles.caixaImagem}>
-           <Image source={{ uri: product.imagem }} style={styles.imagem} />
-            </View>
-        
-            <Text style={styles.nome}>{product.nome}</Text>
-            <Text style={styles.preco}>{product.preco}</Text>
-            <Text style={styles.descricao}>{product.descricao}</Text>
-                 <TouchableOpacity style={styles.botaoComprar}>
-            <Text style={styles.textoBotao}>Comprar Agora</Text>
-        </TouchableOpacity>
-        </View>
-    );
+export default function DetailScreen({ route }) {
+  const { product } = route.params;
+
+  return (
+    <View style={styles.container}>
+      <Image source={product.image} style={styles.image} />
+
+      <Text style={styles.name}>{product.name}</Text>
+      <Text style={styles.price}>{product.price}</Text>
+      <Text style={styles.desc}>{product.description}</Text>
+
+      <TouchableOpacity style={styles.cart}>
+        <Text style={styles.cartText}>Adicionar ao carrinho</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={styles.buy}>
+        <Text style={styles.buyText}>Comprar agora</Text>
+      </TouchableOpacity>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#f8edf1',
-    },
-    botaoVoltar: {
-        marginTop: 20,
-        marginBottom: 10,
-    },
-    caixaImagem: {
-        backgroundColor: '#f6c8d4',
-        borderRadius: 20,
-        alignItems: 'center',
-        marginBottom: 20,
-    },
-      imagem: {
-        width: 180,
-        height: 180,
-      },
-      categoria: {
-        fontSize: 14, 
-        color: '#888',
-        marginTop: 5,
-      },
-      preco: {
-        fontSize: 16,
-        color: '#E2049F',
-        fontWeight: 'bold',
-        marginVertical: 10,
-      },
-      nome: {
-        fontSize: 22,
-        fontWeight: 'bold',
-        color: '#444',
-      },
-      descricao: {
-        fontSize: 16,
-        color: '#555',
-        marginBottom: 20,
-      },
-      botaoComprar: {
-        backgroundColor: '#FB7E9D',
-        padding: 14,
-        borderRadius: 30,
-        alignItems: 'center',
-      },
-      textoBotao: {
-        color: '#fff',
-        fontSize: 16,
-        fontWeight: 'bold',
-      }
+  container: {
+    flex: 1,
+    padding: 20,
+    backgroundColor: "#fff",
+  },
+  image: {
+    width: "100%",
+    height: 200,
+    resizeMode: "contain",
+  },
+  name: {
+    fontSize: 20,
+    marginTop: 10,
+  },
+  price: {
+    fontSize: 18,
+    color: "#e91e63",
+    marginVertical: 5,
+  },
+  desc: {
+    fontSize: 14,
+    color: "#555",
+  },
+  cart: {
+    backgroundColor: "#ddd",
+    padding: 12,
+    borderRadius: 10,
+    marginTop: 15,
+  },
+  cartText: {
+    textAlign: "center",
+  },
+  buy: {
+    backgroundColor: "#e91e63",
+    padding: 15,
+    borderRadius: 10,
+    marginTop: 10,
+  },
+  buyText: {
+    color: "#fff",
+    textAlign: "center",
+    fontWeight: "bold",
+  },
 });
