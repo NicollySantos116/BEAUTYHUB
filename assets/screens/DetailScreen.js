@@ -1,139 +1,347 @@
 import React from "react";
-import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView, Dimensions } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
+import { Feather, AntDesign } from "@expo/vector-icons";
 
-const windowWidth = Dimensions.get("window").width;
-
-export default function DetailScreen({ route }) {
+export default function DetailScreen({ route, navigation }) {
   const { product } = route.params;
 
   return (
-    <ScrollView style={styles.container}>
-      <Image source={{ uri: product.image }} style={styles.image} />
+    <ScrollView
+      style={styles.screen}
+      contentContainerStyle={styles.content}
+      showsVerticalScrollIndicator={false}
+    >
+      <View style={styles.mobileFrame}>
+        <View style={styles.header}>
+          <View style={styles.topRow}>
+            <Image
+              source={require("../images/logo.png")}
+              style={styles.logo}
+              resizeMode="contain"
+            />
 
-      <Text style={styles.name}>{product.name}</Text>
-      <Text style={styles.price}>{product.price}</Text>
+            <View style={styles.icons}>
+              <Feather
+                name="shopping-bag"
+                size={18}
+                color="#2c2c2c"
+                style={styles.iconSpacing}
+              />
+              <AntDesign name="user" size={22} color="#d9cfd5" />
+            </View>
+          </View>
 
-      <Text style={styles.description}>{product.description}</Text>
+          <View style={styles.searchWrapper}>
+            <Feather
+              name="search"
+              size={14}
+              color="#222"
+              style={styles.searchIcon}
+            />
+            <Text style={styles.searchFake}>Search</Text>
+          </View>
 
-      <TouchableOpacity style={styles.addCart}>
-        <Text style={styles.addCartText}>Adicionar ao carrinho</Text>
-      </TouchableOpacity>
+          <View style={styles.topMenu}>
+            <Text style={styles.topMenuItem}>Home</Text>
+            <Text style={styles.topMenuItem}>Maquiagem</Text>
+            <Text style={styles.topMenuItem}>About Us</Text>
+          </View>
+        </View>
 
-      <TouchableOpacity style={styles.buyNow}>
-        <Text style={styles.buyNowText}>Comprar agora</Text>
-      </TouchableOpacity>
+        <View style={styles.productArea}>
+          <View style={styles.productRow}>
+            <View style={styles.imageBox}>
+              <Image
+                source={{ uri: product.image }}
+                style={styles.productImage}
+                resizeMode="contain"
+              />
+            </View>
 
-      <Text style={styles.paymentTitle}>Meios de pagamento</Text>
+            <View style={styles.infoBox}>
+              <Text style={styles.description}>• {product.description}</Text>
+              <Text style={styles.price}>{product.price}</Text>
 
-      <View style={styles.paymentMethods}>
-        <Image
-          source={{ uri: "https://http2.mlstatic.com/frontend-assets/ui-navigation/5.21.0/mercado-pago/MP-acceptance-medium.png" }}
-          style={styles.paymentImage}
-          resizeMode="contain"
-        />
+              <TouchableOpacity style={styles.buyButton} activeOpacity={0.85}>
+                <Text style={styles.buyButtonText}>Comprar agora</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+
+          <TouchableOpacity style={styles.cartButton} activeOpacity={0.85}>
+            <Text style={styles.cartButtonText}>Adicionar ao carrinho</Text>
+          </TouchableOpacity>
+
+          <Text style={styles.paymentTitle}>Meios de pagamento</Text>
+
+          <View style={styles.greenBox}>
+            <Text style={styles.greenText}>Pague em até 5x sem juros!</Text>
+          </View>
+
+          <Text style={styles.paymentSubtitle}>Linha de Crédito</Text>
+          <View style={styles.logoRow}>
+            <Image
+              source={{
+                uri: "https://http2.mlstatic.com/frontend-assets/ui-navigation/5.21.0/mercado-pago/MP-acceptance-medium.png",
+              }}
+              style={styles.mercadoPago}
+              resizeMode="contain"
+            />
+          </View>
+
+          <Text style={styles.paymentSubtitle}>Cartões de crédito</Text>
+          <View style={styles.logoRow}>
+            <Image
+              source={{
+                uri: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Elo_logo.svg/1200px-Elo_logo.svg.png",
+              }}
+              style={styles.cardLogo}
+              resizeMode="contain"
+            />
+            <Image
+              source={{
+                uri: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Mastercard-logo.png/320px-Mastercard-logo.png",
+              }}
+              style={styles.cardLogo}
+              resizeMode="contain"
+            />
+          </View>
+
+          <Text style={styles.paymentSubtitle}>Pix</Text>
+          <View style={styles.logoRow}>
+            <Image
+              source={{
+                uri: "https://upload.wikimedia.org/wikipedia/commons/5/56/Pix_Logo.svg",
+              }}
+              style={styles.pixLogo}
+              resizeMode="contain"
+            />
+          </View>
+        </View>
       </View>
-
-      <Text style={styles.paymentSubTitle}>Linha de Crédito</Text>
-      <View style={styles.paymentMethods}>
-        <Image
-          source={{ uri: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Elo_logo.svg/1200px-Elo_logo.svg.png" }}
-          style={styles.paymentImage}
-          resizeMode="contain"
-        />
-        <Image
-          source={{ uri: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Mastercard-logo.png/320px-Mastercard-logo.png" }}
-          style={styles.paymentImage}
-          resizeMode="contain"
-        />
-        <Image
-          source={{ uri: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Visa.svg/2560px-Visa.svg.png" }}
-          style={styles.paymentImage}
-          resizeMode="contain"
-        />
-      </View>
-
-      <Text style={styles.paymentSubTitle}>Pix</Text>
-      <View style={styles.paymentMethods}>
-        <Image
-          source={{ uri: "https://upload.wikimedia.org/wikipedia/commons/5/56/Pix_Logo.svg" }}
-          style={[styles.paymentImage, { width: 50, height: 50 }]}
-          resizeMode="contain"
-        />
-      </View>
-
     </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  screen: {
     flex: 1,
-    backgroundColor: "#fce4ec",
-    padding: 20,
+    backgroundColor: "#efefef",
   },
-  image: {
-    width: windowWidth - 40,
-    height: 220,
-    borderRadius: 20,
-    marginBottom: 15,
+
+  content: {
+    alignItems: "center",
+    paddingVertical: 14,
   },
-  name: {
-    fontSize: 22,
-    fontWeight: "bold",
-    color: "#880e4f",
+
+  mobileFrame: {
+    width: "100%",
+    maxWidth: 380,
+    backgroundColor: "#f8e7ec",
+    paddingBottom: 20,
   },
-  price: {
-    fontSize: 18,
-    color: "#e91e63",
-    marginVertical: 10,
-    fontWeight: "600",
+
+  header: {
+    backgroundColor: "#f4becf",
+    paddingTop: 14,
+    paddingHorizontal: 12,
+    paddingBottom: 0,
   },
-  description: {
-    fontSize: 14,
-    color: "#555",
-    marginBottom: 25,
+
+  topRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "flex-start",
+    marginBottom: 8,
   },
-  addCart: {
-    backgroundColor: "#ddd",
-    borderRadius: 12,
-    paddingVertical: 15,
-    marginBottom: 15,
+
+  logo: {
+    width: 110,
+    height: 58,
   },
-  addCartText: {
-    textAlign: "center",
-    fontWeight: "600",
-  },
-  buyNow: {
-    backgroundColor: "#e91e63",
-    borderRadius: 12,
-    paddingVertical: 15,
-    marginBottom: 20,
-  },
-  buyNowText: {
-    color: "#fff",
-    textAlign: "center",
-    fontWeight: "bold",
-  },
-  paymentTitle: {
-    fontWeight: "bold",
-    fontSize: 18,
-    marginBottom: 10,
-    color: "#880e4f",
-  },
-  paymentMethods: {
+
+  icons: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 15,
+    marginTop: 2,
   },
-  paymentImage: {
-    width: 80,
+
+  iconSpacing: {
+    marginRight: 12,
+  },
+
+  searchWrapper: {
     height: 30,
-    marginRight: 10,
+    backgroundColor: "#fff",
+    borderRadius: 16,
+    flexDirection: "row",
+    alignItems: "center",
+    paddingHorizontal: 10,
+    marginBottom: 6,
   },
-  paymentSubTitle: {
-    fontWeight: "600",
+
+  searchIcon: {
+    marginRight: 4,
+  },
+
+  searchFake: {
+    fontSize: 13,
+    color: "#3f3f3f",
+  },
+
+  topMenu: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    borderTopWidth: 0.6,
+    borderBottomWidth: 0.6,
+    borderColor: "#d8c9cf",
+    backgroundColor: "#f8e7ec",
+    paddingVertical: 5,
+    marginHorizontal: -12,
+    marginTop: 2,
+  },
+
+  topMenuItem: {
+    fontSize: 11,
+    color: "#6d6d6d",
+    fontWeight: "500",
+  },
+
+  productArea: {
+    paddingHorizontal: 14,
+    paddingTop: 18,
+  },
+
+  productRow: {
+    flexDirection: "row",
+    alignItems: "flex-start",
+  },
+
+  imageBox: {
+    width: 110,
+    height: 110,
+    borderRadius: 18,
+    backgroundColor: "#f6c1d0",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 8,
+    marginRight: 12,
+
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
+    elevation: 4,
+  },
+
+  productImage: {
+    width: "82%",
+    height: "82%",
+  },
+
+  infoBox: {
+    flex: 1,
+    paddingTop: 4,
+  },
+
+  description: {
+    fontSize: 12,
+    lineHeight: 17,
+    color: "#3d3d3d",
+    marginBottom: 10,
+  },
+
+  price: {
+    fontSize: 16,
+    fontWeight: "700",
+    color: "#f21874",
+    marginBottom: 10,
+  },
+
+  buyButton: {
+    backgroundColor: "#f46d98",
+    borderRadius: 18,
+    paddingVertical: 10,
+    alignItems: "center",
+  },
+
+  buyButtonText: {
+    color: "#fff",
+    fontWeight: "700",
+    fontSize: 13,
+  },
+
+  cartButton: {
+    marginTop: 10,
+    alignSelf: "flex-start",
+    backgroundColor: "#a5a5a5",
+    borderRadius: 16,
+    paddingVertical: 6,
+    paddingHorizontal: 14,
+  },
+
+  cartButtonText: {
+    color: "#fff",
+    fontSize: 11,
+    fontWeight: "500",
+  },
+
+  paymentTitle: {
+    marginTop: 20,
+    fontSize: 16,
+    fontWeight: "700",
+    color: "#555",
+    marginBottom: 12,
+  },
+
+  greenBox: {
+    backgroundColor: "#11b84a",
+    borderRadius: 6,
+    paddingVertical: 10,
+    paddingHorizontal: 12,
+    marginBottom: 18,
+  },
+
+  greenText: {
+    color: "#fff",
+    textAlign: "center",
+    fontWeight: "700",
+    fontSize: 13,
+  },
+
+  paymentSubtitle: {
     fontSize: 14,
-    color: "#880e4f",
-    marginBottom: 5,
+    color: "#555",
+    marginBottom: 8,
+    marginTop: 2,
+  },
+
+  logoRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 16,
+    gap: 12,
+  },
+
+  mercadoPago: {
+    width: 100,
+    height: 34,
+  },
+
+  cardLogo: {
+    width: 90,
+    height: 40,
+  },
+
+  pixLogo: {
+    width: 70,
+    height: 30,
   },
 });
