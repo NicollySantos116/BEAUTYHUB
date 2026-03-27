@@ -2,7 +2,7 @@ export default {
   skinCare: [
     {
       id: "1",
-      name: "Tonico\nCreamy",
+      name: "Tonico\Creamy",
       price: "R$ 50,00",
       description: "Tônico facial hidratante e refrescante.",
       image:

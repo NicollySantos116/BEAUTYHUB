@@ -1,35 +1,35 @@
-import React from "react";
+import React from "react"; // Importar o React 
 import {
-  View,
-  Text,
-  Image,
-  StyleSheet,
-  ScrollView,
-  TouchableOpacity,
+  View, //Container
+  Text, // Texto 
+  Image, // Imagem
+  StyleSheet, // Estilos
+  ScrollView, // Rolaagem
+  TouchableOpacity, // Botão Clicável
 } from "react-native";
-import { Feather, AntDesign } from "@expo/vector-icons";
+import { Feather, AntDesign } from "@expo/vector-icons";  // Importar os ícones dos produtos 
 
-export default function DetailScreen({ route, navigation }) {
-  const { product } = route.params;
+export default function DetailScreen({ route, navigation }) { // Criar tabela DatailScreen.js, o route dados da tela anterior e o v=navegation é a naavegação entre telas
+  const { product } = route.params; // Pega o produto enviado pela outra tela 
 
-  return (
-    <ScrollView
-      style={styles.screen}
-      contentContainerStyle={styles.content}
-      showsVerticalScrollIndicator={false}
+  return ( // Começa o que será exibido 
+    <ScrollView // Permitir o que vai ser rolado na tela 
+      style={styles.screen} // Aplica estilo geral 
+      contentContainerStyle={styles.content} // Estilo do conteúdo interno 
+      showsVerticalScrollIndicator={false} // Esconde a barra de rolagem 
     >
-      <View style={styles.mobileFrame}>
-        <View style={styles.header}>
-          <View style={styles.topRow}>
+      <View style={styles.mobileFrame}> // Layout do App
+        <View style={styles.header}> // Área do topo
+          <View style={styles.topRow}> //  Linha com logo mais ícones
             <Image
-              source={require("../images/logo.png")}
-              style={styles.logo}
-              resizeMode="contain"
+              source={require("../images/logo.png")} // Mostrar o logo do App
+              style={styles.logo} // Container dos ícones 
+              resizeMode="contain" 
             />
 
             <View style={styles.icons}>
               <Feather
-                name="shopping-bag"
+                name="shopping-bag" 
                 size={18}
                 color="#2c2c2c"
                 style={styles.iconSpacing}
@@ -85,36 +85,16 @@ export default function DetailScreen({ route, navigation }) {
             <Text style={styles.greenText}>Pague em até 5x sem juros!</Text>
           </View>
 
-          <Text style={styles.paymentSubtitle}>Linha de Crédito</Text>
           <View style={styles.logoRow}>
             <Image
               source={{
-                uri: "https://http2.mlstatic.com/frontend-assets/ui-navigation/5.21.0/mercado-pago/MP-acceptance-medium.png",
+                uri: "https://images.tcdn.com.br/img/editor/up/905514/Formas_de_Pagamento1.PNG",
               }}
               style={styles.mercadoPago}
               resizeMode="contain"
             />
           </View>
 
-          <Text style={styles.paymentSubtitle}>Cartões de crédito</Text>
-          <View style={styles.logoRow}>
-            <Image
-              source={{
-                uri: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Elo_logo.svg/1200px-Elo_logo.svg.png",
-              }}
-              style={styles.cardLogo}
-              resizeMode="contain"
-            />
-            <Image
-              source={{
-                uri: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Mastercard-logo.png/320px-Mastercard-logo.png",
-              }}
-              style={styles.cardLogo}
-              resizeMode="contain"
-            />
-          </View>
-
-          <Text style={styles.paymentSubtitle}>Pix</Text>
           <View style={styles.logoRow}>
             <Image
               source={{
@@ -233,7 +213,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 8,
     marginRight: 12,
-
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 6 },
     shadowOpacity: 0.1,
@@ -316,32 +295,20 @@ const styles = StyleSheet.create({
     fontSize: 13,
   },
 
-  paymentSubtitle: {
-    fontSize: 14,
-    color: "#555",
-    marginBottom: 8,
-    marginTop: 2,
-  },
-
   logoRow: {
     flexDirection: "row",
+    justifyContent: "center",
     alignItems: "center",
     marginBottom: 16,
-    gap: 12,
   },
 
   mercadoPago: {
-    width: 100,
-    height: 34,
-  },
-
-  cardLogo: {
-    width: 90,
-    height: 40,
+    width: "100%",
+    height: 90,
   },
 
   pixLogo: {
-    width: 70,
-    height: 30,
+    width: 90,
+    height: 36,
   },
 });
