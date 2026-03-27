@@ -18,9 +18,9 @@ export default function DetailScreen({ route, navigation }) { // Criar tabela Da
       contentContainerStyle={styles.content} // Estilo do conteúdo interno 
       showsVerticalScrollIndicator={false} // Esconde a barra de rolagem 
     >
-      <View style={styles.mobileFrame}> // Layout do App
-        <View style={styles.header}> // Área do topo
-          <View style={styles.topRow}> //  Linha com logo mais ícones
+      <View style={styles.mobileFrame}> 
+        <View style={styles.header}> 
+          <View style={styles.topRow}> 
             <Image
               source={require("../images/logo.png")} // Mostrar o logo do App
               style={styles.logo} // Container dos ícones 
