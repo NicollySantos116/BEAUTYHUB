@@ -1,3 +1,4 @@
+//arquivo de dados de produtos, exporta objetos como categorias de produtos (skinCare, makeup, hair), cada um contendo uma lista de produtos com id, nome, preço, descrição e imagem.
 export default {
   skinCare: [
     {
