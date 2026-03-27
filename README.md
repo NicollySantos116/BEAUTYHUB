@@ -24,4 +24,3 @@ O BeautyHub permite visualizar produtos, acessar detalhes e simular compras de f
 | Nicolly Rodrigues de Souza Santos |
 | Rebeca Gabrielly Moreira Alves |
 | Yasmin Isabele Porto |
-<!-- teste -->
