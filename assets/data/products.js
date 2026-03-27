@@ -2,7 +2,7 @@ export default {
   skinCare: [
     {
       id: "1",
-      name: "Tonico\Creamy",
+      name: "Tonico Creamy",
       price: "R$ 50,00",
       description: "Tônico facial hidratante e refrescante.",
       image:
@@ -10,7 +10,7 @@ export default {
     },
     {
       id: "2",
-      name: "Creme\nFirmador Anti\nAging",
+      name: "Creme Firmador Anti-Aging",
       price: "R$ 85,00",
       description: "Creme para firmeza e rejuvenescimento da pele.",
       image:

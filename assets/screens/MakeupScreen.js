@@ -12,56 +12,15 @@ import { Feather, AntDesign } from "@expo/vector-icons";
 import products from "../data/products";
 import ProductCard from "../components/ProductCard";
 import logo from "../images/logo.png";
-import banner from "../images/banner.png";
 
-export default function HomeScreen({ navigation }) {
+export default function MakeupScreen({ navigation }) {
   const [search, setSearch] = useState("");
-
-  const allProducts = [
-    ...products.skinCare,
-    ...products.makeup,
-    ...products.hair,
-  ];
-
-  const filteredSkinCare = useMemo(() => {
-    return products.skinCare.filter((item) =>
-      item.name.toLowerCase().includes(search.toLowerCase())
-    );
-  }, [search]);
 
   const filteredMakeup = useMemo(() => {
     return products.makeup.filter((item) =>
       item.name.toLowerCase().includes(search.toLowerCase())
     );
   }, [search]);
-
-  const filteredHair = useMemo(() => {
-    return products.hair.filter((item) =>
-      item.name.toLowerCase().includes(search.toLowerCase())
-    );
-  }, [search]);
-
-  const filteredAll = useMemo(() => {
-    return allProducts.filter((item) =>
-      item.name.toLowerCase().includes(search.toLowerCase())
-    );
-  }, [search]);
-
-  const renderSection = (title, data) => {
-    if (!data.length) return null;
-
-    return (
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>{title}</Text>
-
-        <View style={styles.grid}>
-          {data.map((item) => (
-            <ProductCard key={item.id} item={item} navigation={navigation} />
-          ))}
-        </View>
-      </View>
-    );
-  };
 
   return (
     <ScrollView
@@ -93,7 +52,7 @@ export default function HomeScreen({ navigation }) {
               style={styles.searchIcon}
             />
             <TextInput
-              placeholder="Pesquisar produtos"
+              placeholder="Pesquisar maquiagem"
               placeholderTextColor="#3f3f3f"
               style={styles.searchInput}
               value={search}
@@ -103,11 +62,11 @@ export default function HomeScreen({ navigation }) {
 
           <View style={styles.topMenu}>
             <TouchableOpacity onPress={() => navigation.navigate("Home")}>
-              <Text style={styles.topMenuItemActive}>Home</Text>
+              <Text style={styles.topMenuItem}>Home</Text>
             </TouchableOpacity>
 
             <TouchableOpacity onPress={() => navigation.navigate("Makeup")}>
-              <Text style={styles.topMenuItem}>Maquiagem</Text>
+              <Text style={styles.topMenuItemActive}>Maquiagem</Text>
             </TouchableOpacity>
 
             <TouchableOpacity onPress={() => navigation.navigate("AboutUs")}>
@@ -116,33 +75,19 @@ export default function HomeScreen({ navigation }) {
           </View>
         </View>
 
-        {!search ? (
-          <>
-            <Image source={banner} style={styles.banner} resizeMode="cover" />
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Todos os produtos de maquiagem</Text>
 
-            {renderSection("Skin Care", filteredSkinCare)}
-            {renderSection("Makeup", filteredMakeup)}
-            {renderSection("Hair", filteredHair)}
-          </>
-        ) : (
-          <View style={styles.section}>
-            <Text style={styles.sectionTitle}>Resultado da busca</Text>
-
-            {filteredAll.length ? (
-              <View style={styles.grid}>
-                {filteredAll.map((item) => (
-                  <ProductCard
-                    key={item.id}
-                    item={item}
-                    navigation={navigation}
-                  />
-                ))}
-              </View>
-            ) : (
-              <Text style={styles.emptyText}>Nenhum produto encontrado.</Text>
-            )}
-          </View>
-        )}
+          {filteredMakeup.length ? (
+            <View style={styles.grid}>
+              {filteredMakeup.map((item) => (
+                <ProductCard key={item.id} item={item} navigation={navigation} />
+              ))}
+            </View>
+          ) : (
+            <Text style={styles.emptyText}>Nenhum produto encontrado.</Text>
+          )}
+        </View>
       </View>
     </ScrollView>
   );
@@ -196,22 +141,22 @@ const styles = StyleSheet.create({
   },
 
   searchWrapper: {
-    height: 40,
+    height: 48,
     backgroundColor: "#fff",
-    borderRadius: 20,
+    borderRadius: 24,
     flexDirection: "row",
     alignItems: "center",
-    paddingHorizontal: 12,
+    paddingHorizontal: 14,
     marginBottom: 6,
   },
 
   searchIcon: {
-    marginRight: 6,
+    marginRight: 8,
   },
 
   searchInput: {
     flex: 1,
-    fontSize: 14,
+    fontSize: 16,
     color: "#222",
     paddingVertical: 0,
   },
@@ -223,31 +168,26 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0.6,
     borderColor: "#d8c9cf",
     backgroundColor: "#f8e7ec",
-    paddingVertical: 8,
+    paddingVertical: 10,
     marginHorizontal: -12,
     marginTop: 2,
   },
 
   topMenuItem: {
-    fontSize: 12,
+    fontSize: 13,
     color: "#6d6d6d",
-    fontWeight: "500",
+    fontWeight: "600",
   },
 
   topMenuItemActive: {
-    fontSize: 12,
+    fontSize: 13,
     color: "#f21874",
     fontWeight: "700",
   },
 
-  banner: {
-    width: "100%",
-    height: 120,
-  },
-
   section: {
     paddingHorizontal: 14,
-    paddingTop: 14,
+    paddingTop: 18,
   },
 
   sectionTitle: {

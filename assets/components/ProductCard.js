@@ -16,9 +16,7 @@ export default function ProductCard({ item, navigation }) {
         />
       </View>
 
-      <Text style={styles.name}>
-        {item.name}
-      </Text>
+      <Text style={styles.name}>{item.name}</Text>
     </TouchableOpacity>
   );
 }
@@ -38,10 +36,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     padding: 8,
-
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 6 },
-    shadowOpacity: 0.10,
+    shadowOpacity: 0.1,
     shadowRadius: 10,
     elevation: 4,
   },
